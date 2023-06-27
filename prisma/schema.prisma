@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId String @id @default(uuid())
+  userProfile UserProfile?
+  activeUser UserActive?
+  deletedUser DeletedUser?
+}
+
+model UserActive {
+  userId String @id
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [userId])
+}
+
+model UserProfile {
+  userId String @id
+  name String
+  // 多分この辺に情報を追加していく
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [userId])
+}
+
+model DeletedUser {
+  userId String @id @default(uuid())
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [userId])
+}
