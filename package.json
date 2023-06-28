@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.2.2",
     "@types/node": "^20.3.2",
+    "prisma-erd-generator": "^1.6.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"
   },
