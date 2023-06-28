@@ -15,6 +15,7 @@ model User {
   userProfile UserProfile?
   activeUser UserActive?
   deletedUser DeletedUser?
+  posts Post[]
 }
 
 model UserActive {
@@ -34,5 +35,11 @@ model UserProfile {
 model DeletedUser {
   userId String @id @default(uuid())
   createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [userId])
+}
+
+model Post {
+  title String @id
+  userId String
   user User @relation(fields: [userId], references: [userId])
 }
