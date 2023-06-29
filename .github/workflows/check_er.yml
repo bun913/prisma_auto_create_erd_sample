@@ -16,11 +16,10 @@ jobs:
       - name: makeERD
         run: |
           npm run erd
-      - run: git fetch origin ${{ github.base_ref }} --depth=1
       - id: checkErdDiff
-        run: echo "changed=$(git diff --name-only origin/${{ github.head_ref }} --relative ./prisma/ERD.md | wc -l | xargs)" >> $GITHUB_OUTPUT
+        run: echo "changed=$(git diff --name-only prisma/ERD.md" >> $GITHUB_OUTPUT
       - run: echo ${{ steps.checkErdDiff.outputs.changed}}
-      - if: ${{ steps.checkErdDiff.outputs.changed != '0' }}
+      - if: ${{ steps.checkErdDiff.outputs.changed != '' }}
         run: |
           echo "ERD.md has changed.Please update ERD.md and commit it."
           exit 1
