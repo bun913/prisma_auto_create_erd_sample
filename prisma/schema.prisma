@@ -36,8 +36,9 @@ model UserProfile {
   userId String @id
   name String
   firstName String
-  // 追加したけどわざとER図をコミットしない
   lastName String
+  // 追加したけどわざとER図をコミットしない
+  middleName String
   createdAt DateTime @default(now())
   user User @relation(fields: [userId], references: [userId])
 }
