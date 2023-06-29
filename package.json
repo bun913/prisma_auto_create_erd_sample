@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^10.2.2",
+    "@prisma/generator-helper": "^4.16.1",
     "@types/node": "^20.3.2",
     "prisma-erd-generator": "^1.6.2",
     "ts-node": "^10.9.1",
