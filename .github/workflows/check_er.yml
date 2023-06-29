@@ -12,14 +12,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-      - run: npmInstall
+      - run: npm install
       - name: makeERD
         run: |
           npm run erd
-      - run: git fetch origin ${{ github.base_ref }} --depth=1
       - id: checkErdDiff
-        run: echo "::set-output name=changed::$(git diff --name-only origin/${{ github.base_ref }} HEAD --relative ./prisma/ERD.md | wc -l)"
-      - if: ${{ steps.checkErdDiff.outputs.changed != '0' }}
+        run: echo "changed=$(git diff --name-only prisma/ERD.md)" >> $GITHUB_OUTPUT
+      - run: echo ${{ steps.checkErdDiff.outputs.changed}}
+      - if: ${{ steps.checkErdDiff.outputs.changed != '' }}
         run: |
           echo "ERD.md has changed.Please update ERD.md and commit it."
           exit 1
