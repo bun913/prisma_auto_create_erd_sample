@@ -17,7 +17,7 @@ jobs:
         run: |
           npm run erd
       - id: checkErdDiff
-        run: echo "changed=$(git diff --name-only prisma/ERD.md" >> $GITHUB_OUTPUT
+        run: echo "changed=$(git diff --name-only prisma/ERD.md)" >> $GITHUB_OUTPUT
       - run: echo ${{ steps.checkErdDiff.outputs.changed}}
       - if: ${{ steps.checkErdDiff.outputs.changed != '' }}
         run: |
