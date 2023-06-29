@@ -17,6 +17,7 @@ erDiagram
     String name 
     String firstName 
     String lastName 
+    String middleName 
     DateTime createdAt 
     }
   
