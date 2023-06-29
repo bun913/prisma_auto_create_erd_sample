@@ -36,7 +36,8 @@ model UserProfile {
   userId String @id
   name String
   firstName String
-  // 多分この辺に情報を追加していく
+  // 追加したけどわざとER図をコミットしない
+  lastName String
   createdAt DateTime @default(now())
   user User @relation(fields: [userId], references: [userId])
 }
