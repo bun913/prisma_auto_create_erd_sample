@@ -16,6 +16,7 @@ erDiagram
     String userId "🗝️"
     String name 
     String firstName 
+    String lastName 
     DateTime createdAt 
     }
   
